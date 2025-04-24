@@ -6,7 +6,7 @@ export class CreateWatchDto {
 
     @ApiProperty({
         type: "string",
-        example: "Rolex"
+        example: "Rolex",
     })
     @IsString()
     @Transform(({ value }) => value.trim())

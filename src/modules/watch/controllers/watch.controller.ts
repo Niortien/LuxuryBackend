@@ -2,14 +2,16 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, ParseIntPipe } from 
 import { WatchService } from '../services/watch.service';
 import { CreateWatchDto } from '../dto/create-watch.dto';
 import { UpdateWatchDto } from '../dto/update-watch.dto';
-import { ApiOkResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiOkResponse, ApiOperation } from '@nestjs/swagger';
 
 @Controller('watch')
 export class WatchController {
     constructor(private readonly watchService: WatchService) { }
 
-    @ApiOperation({ summary: 'Créer une nouvelle watch' })
-    @ApiOkResponse({ type: CreateWatchDto })
+    @ApiOperation({ summary: 'Créer une nouvelle la moontre' }) // Description de l'opération
+    @ApiCreatedResponse({type: CreateWatchDto})
+    @ApiBadRequestResponse() // Type de la réponse
+    
     @Post()
     create(@Body() createWatchDto: CreateWatchDto) {
         return this.watchService.create(createWatchDto);
