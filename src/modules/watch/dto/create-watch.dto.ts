@@ -1,4 +1,4 @@
-import { IsString, IsInt, IsOptional } from 'class-validator';
+import { IsString, isNumber, IsOptional, IsNumber } from 'class-validator';
 import { Transform } from "class-transformer"
 import { ApiProperty } from "@nestjs/swagger"
 
@@ -24,7 +24,8 @@ export class CreateWatchDto {
         type: "number",
         example: 1000
     })
-    @IsInt()
+    @IsNumber()
+    @Transform(({ value }) => Number(value))
     price: number
 
     @ApiProperty({
