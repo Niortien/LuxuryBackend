@@ -32,7 +32,7 @@ export class WatchController {
     }))
     @Post()
     create(@Body() createWatchDto: CreateWatchDto, @UploadedFile() image: Express.Multer.File) {
-        return this.watchService.create({ ...createWatchDto, pathi: image.path });
+        return this.watchService.create({ ...createWatchDto, pathi: image.path || "" });
     }
 
     @ApiOperation({ summary: 'Afficher toutes les watches' })
