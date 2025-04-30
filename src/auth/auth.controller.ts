@@ -2,7 +2,7 @@ import { Controller, Get, Post, Body, Patch, Param, Delete, UploadedFile, UseGua
 import { AuthService } from './auth.service';
 import { InscriptionDto } from './dto/inscription.dto';
 import { ConnexionDto } from './dto/connexion.dto';
-import { ApiBadRequestResponse, ApiCreatedResponse, ApiOperation } from '@nestjs/swagger';
+import { ApiBadRequestResponse, ApiCreatedResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
@@ -10,7 +10,8 @@ import { extname } from 'path';
 import { AuthGuard } from './guards/auth.guard';
 import { Request } from 'express';
 
-@Controller('Auth')
+@ApiTags('Auth')
+@Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) { }
 

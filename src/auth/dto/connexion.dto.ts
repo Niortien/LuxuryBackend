@@ -6,13 +6,13 @@ import { ApiProperty } from "@nestjs/swagger";
 export class ConnexionDto {
     @ApiProperty({ type: String, description: "Email" })
     @IsEmail()
-    @IsNotEmpty()
+    @IsNotEmpty({ message: "Email est requis" })
     @Transform(({ value }) => value.trim())
     email: string;
 
     @ApiProperty({ type: String, description: "Password" })
-    @IsString()
-    @IsNotEmpty()
+    @IsString({ message: "Password doit etre une chaine de caractere" })
+    @IsNotEmpty({ message: "Password est requis" })
     @Transform(({ value }) => value.trim())
     password: string;
 }
