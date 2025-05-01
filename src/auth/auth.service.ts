@@ -88,7 +88,7 @@ export class AuthService {
 
     const token = await this.jwtService.signAsync(payload, {
       secret: jwtConstants.secret,
-      expiresIn: "10s"
+      expiresIn: "1h"
     });
 
     const { password, updatedAt, ...rest } = userExist;

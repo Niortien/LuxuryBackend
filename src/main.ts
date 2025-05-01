@@ -30,8 +30,15 @@ async function bootstrap() {
     .addTag('cats')
     .build();
   const documentFactory = () => SwaggerModule.createDocument(app, config);
+<<<<<<< HEAD
   SwaggerModule.setup('swagger', app, documentFactory);
   
   await app.listen(process.env.PORT ?? 3000);
+=======
+  SwaggerModule.setup('api', app, documentFactory);
+
+  // CONNEXION SERVEUR
+  await app.listen(process.env.PORT ?? 3001);
+>>>>>>> origin/issa
 }
 bootstrap();
