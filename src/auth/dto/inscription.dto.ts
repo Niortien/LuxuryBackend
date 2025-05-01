@@ -1,10 +1,10 @@
-
 import { ApiProperty } from "@nestjs/swagger";
 import { Transform } from "class-transformer";
 import { IsEmail, IsNotEmpty, IsOptional, IsString } from "class-validator";
 import { isValid, parse } from "date-fns";
 
-export class CreateUserDto {
+export class InscriptionDto {
+
     @ApiProperty({ type: String, description: "Email" })
     @IsEmail()
     @IsNotEmpty()
