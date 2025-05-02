@@ -17,7 +17,7 @@ model Watch {
   updatedAt   DateTime @updatedAt @map("updated_at")
 
   @@index([id, name, price])
-  @@map("watches")
+  @@map("watch")
 }
 
 model User {
