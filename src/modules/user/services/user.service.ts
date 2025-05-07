@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { CreateUserDto } from '../dto/create-user.dto';
 import { UpdateUserDto } from '../dto/update-user.dto';
 import { PrismaService } from 'src/database/prisma.service';
@@ -12,16 +12,25 @@ export class UserService {
     })
   }
 
-  findAll() {
-    return `This action returns all user`;
+  async findAll() {
+
+    const users = await this.prisma.user.findMany();
+
+    return users;
   }
 
-  findOne(id: string) {
-    return this.prisma.user.findUnique({
+  async findOne(id: string) {
+    const user = await this.prisma.user.findUnique({
       where: {
         id
       }
     })
+
+    if (!user) {
+      throw new UnauthorizedException();
+    }
+
+    return user;
   }
   findOneByEmail(email: string) {
     return this.prisma.user.findUnique({

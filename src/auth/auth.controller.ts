@@ -7,7 +7,7 @@ import { UseInterceptors } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { extname } from 'path';
-import { AuthGuard } from './guards/auth.guard';
+import { JwtAuthGuard } from './guards/jwt-auth.guard';
 import { Request } from 'express';
 
 @ApiTags('Auth')
@@ -46,7 +46,7 @@ export class AuthController {
 
   @ApiOperation({ summary: "Profile utilisateur" })
 
-  @UseGuards(AuthGuard)
+  @UseGuards(JwtAuthGuard)
   @Get("/profile")
   profile(@Req() req: Request) {
     return this.authService.profile(req);

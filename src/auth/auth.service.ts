@@ -6,7 +6,6 @@ import { HachageService } from 'src/hachage/hachage.service';
 import { UserService } from 'src/modules/user/services/user.service';
 import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
-import { User } from '@prisma/client';
 import { jwtConstants } from './constants/JWTConstants';
 
 
